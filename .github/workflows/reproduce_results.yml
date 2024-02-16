@@ -12,7 +12,7 @@ jobs:
       # Directory that will be published on github pages
       DATADIR: ./data
       FIGDIR: ./artifacts/figures
-      RESULTDIR: ./artifacts/results
+      RESULTSDIR: ./artifacts/results
 
 
     steps:
