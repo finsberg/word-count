@@ -39,7 +39,7 @@ and activate the environment
 conda activate word-count
 ```
 
-### Exercises
+## Exercises
 
 
 ### Exercise 1 
@@ -48,6 +48,8 @@ conda activate word-count
 - Also, use the script [plot.py](code/plot.py) to create a figure for each dataset and save it in a folder called `figures`
 
 **Note:** Make sure to use appropriate names for the results and figures. 
+
+Solution: https://github.com/finsberg/word-count/tree/exercise-1
 
 
 ### Exercise 2
@@ -70,6 +72,8 @@ sys.path.append((here / ".." / "code").as_posix())
 ```
 python3 -m pytest
 ```
+
+Solution: https://github.com/finsberg/word-count/tree/exercise-2
 
 ### Exercise 3
 Create a GitHub action to run the test every time you push to the repo. 
@@ -104,6 +108,8 @@ jobs:
       - name: Run tests
         run: python3 -m pytest tests
 ```
+
+Solution: https://github.com/finsberg/word-count/tree/exercise-3
 
 ### Exercise 4
 
@@ -153,3 +159,5 @@ jobs:
           if-no-files-found: error
 
 ```
+
+Solution: https://github.com/finsberg/word-count/tree/exercise-4
