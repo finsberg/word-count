@@ -86,11 +86,6 @@ name: Run tests
 
 on: [push]
 
-    # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-  workflow_call:
-
-
 jobs:
   run:
     runs-on: ubuntu-22.04
@@ -120,11 +115,6 @@ Create a GitHub workflow for running the full analysis and uploading the results
 name: Run tests
 
 on: [push]
-
-    # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-  workflow_call:
-
 
 jobs:
   run:
