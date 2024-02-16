@@ -10,6 +10,8 @@ most common words.
   [Creative Commons Attribution license (CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
 ## Install dependencies
+
+### Python virtual environment
 Create a virtual environement
 ```
 python3 -m venv venv
@@ -25,6 +27,16 @@ and on Windows you do
 Next you can install the dependencies
 ```
 python3 -m pip install -r requirements.txt
+```
+
+### Conda environment
+Install the conda environment using
+```
+conda env create -f environment.yml
+```
+and activate the environment
+```
+conda activate word-count
 ```
 
 ### Exercises
