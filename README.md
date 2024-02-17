@@ -156,3 +156,81 @@ Solution: https://github.com/finsberg/word-count/tree/exercise-4
 ## Exercise 5:
 
 Create a release of your repository. Use the tag `v1.0`
+
+## Exercise 6:
+
+Create a `Dockerfile` in the root of the repo that captures the environment. Try to build the docker image locally, e.g (from the root to the repo)
+```
+docker build -t word-count .
+```
+Try to run a container
+```
+docker run --rm -it word-count
+```
+And make sure all the code works inside the container.
+
+
+Solution: https://github.com/finsberg/word-count/tree/exercise-6
+
+## Exercise 7:
+
+Create a GitHub workflow for buildig and pushing a docker image to the registry associated with your repository. Create a new file `.github/workflows/docker-image.yml` with the following content
+
+```yml
+name: Create and publish a Docker image
+
+on:
+  push:
+    branches:
+      - "!*"
+    tags:
+      - "v*"
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+```
+**Note 1:** This will only run whenever you create a new tag (i.e you create a Release on GitHub)
+**Note 2:** This will create two different images; one for Linux/AMD64 and one for Linux/ARM64. Linux/ARM64 is the type of image you will need if you are running Docker on Mac with Apple Silicon. 
+
+
+Create a new release of the code, and make sure the workflow runs and creates an image (also called package on GitHub) in your repository
