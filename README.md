@@ -151,3 +151,8 @@ jobs:
 ```
 
 Solution: https://github.com/finsberg/word-count/tree/exercise-4
+
+
+## Exercise 5:
+
+Create a release of your repository. Use the tag `v1.0`
