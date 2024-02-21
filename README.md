@@ -174,7 +174,7 @@ Solution: https://github.com/finsberg/word-count/tree/exercise-6
 
 ## Exercise 7:
 
-Create a GitHub workflow for buildig and pushing a docker image to the registry associated with your repository. Create a new file `.github/workflows/docker-image.yml` with the following content
+Create a GitHub workflow for building and pushing a docker image to the registry associated with your repository. Create a new file `.github/workflows/docker-image.yml` with the following content
 
 ```yml
 name: Create and publish a Docker image
