@@ -7,12 +7,12 @@ from pathlib import Path
 
 def plot(data: Dict[str, int], filename: Optional[Path] = None):
     # Create figure folder if not exists
-    filename.parent.mkdir(parents=True, exist_ok=True)
 
     fig, ax = plt.subplots(figsize=(10, 5))
     ax.bar(data.keys(), data.values())
     ax.set_title("10 most common words")
     if filename is not None:
+        filename.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(filename)
     else:
         plt.show()

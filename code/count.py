@@ -41,6 +41,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     # save the output
     if args["output"] is not None:
+        args["output"].parent.mkdir(parents=True, exist_ok=True)
         args["output"].write_text(output)
 
     return 0
